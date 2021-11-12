@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+<section class="hero is-link">
+  <div class="hero-body">
+    <p class="title">
+        Web scraper app for Developer Jobs
+    </p>
+
+    <p class="subtitle">
+      A web scraper that scrapes the www.reeds.co.uk website in search for python developer jobs.
+    </p>
+  </div>
+
+</section>
+<div>
+    <h4>{{result["Job Title:"]}}</h4>
+        <h5>{{result["Company:"]}}</h5>
+        <h6>{{result["Location"]}}</h6>
+        <h6>{{result["Date Posted:"]}}</h6>
+
+        <h6>{{result["Salary:"]}}</h6>
+        <p>{{result["Time:"]}}</p>
+        <p>{{result["Work from home:"]}}</p>
+        <p>{{result["Description:"]}}</p>
+        <p>{{result["More info:"]}}</p>
+
+  </div>
+  </body>
+</html>
