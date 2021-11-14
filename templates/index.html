@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,6 +6,7 @@
     <title>!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
+
   <body>
   <div class="block">
 <section class="hero is-link">
@@ -20,27 +20,20 @@
 
 <div class="block">
 <div class="container is-fluid">
-    <form action="/" method="POST">
+<form action="/result" method="POST">
   <div class="form-group">
     <label> Enter the URL link you wish to scrape:</label>
-    <input class="input is-normal; input is-link" type="text" placeholder="URL link">
+    <input class="input is-link" type="text" placeholder="URL link" name="link">
   </div>
-    </form>
-</div>
-</div>
-
-  
-  <div class="container is-fluid">
-      <div class="block">
-      <form action="/" method="POST">
   <div class="form-group">
     <label>Enter the HTML tag you wish to scrape: </label>
-      <input class="input is-normal; input is-link" type="text" placeholder="HTML TAG">
+    <input class="input is-normal" type="text" placeholder="HTML TAG" name="tag">
   </div>
-      </form>
-  </div>
-  <button type="scrape" class="button is-dark" class="button is-large">Scrape!</button>
-  </div>
+  <button type="submit" class="button is-dark" class="button is-large">Scrape!</button>
+</form>
+
+</div>
+</div>
 
   </body>
 </html>
