@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,30 +8,39 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
   <body>
+  <div class="block">
 <section class="hero is-link">
   <div class="hero-body">
     <p class="title">
-        Web scraper app for Developer Jobs
-    </p>
-
-    <p class="subtitle">
-      A web scraper that scrapes the www.reeds.co.uk website in search for python developer jobs.
+    A Python-based Web Scraper
     </p>
   </div>
-
 </section>
-<div>
-    <h4>{{result["Job Title:"]}}</h4>
-        <h5>{{result["Company:"]}}</h5>
-        <h6>{{result["Location"]}}</h6>
-        <h6>{{result["Date Posted:"]}}</h6>
+      </div>
 
-        <h6>{{result["Salary:"]}}</h6>
-        <p>{{result["Time:"]}}</p>
-        <p>{{result["Work from home:"]}}</p>
-        <p>{{result["Description:"]}}</p>
-        <p>{{result["More info:"]}}</p>
-
+<div class="block">
+<div class="container is-fluid">
+    <form action="/" method="POST">
+  <div class="form-group">
+    <label> Enter the URL link you wish to scrape:</label>
+    <input class="input is-normal; input is-link" type="text" placeholder="URL link">
   </div>
+    </form>
+</div>
+</div>
+
+  
+  <div class="container is-fluid">
+      <div class="block">
+      <form action="/" method="POST">
+  <div class="form-group">
+    <label>Enter the HTML tag you wish to scrape: </label>
+      <input class="input is-normal; input is-link" type="text" placeholder="HTML TAG">
+  </div>
+      </form>
+  </div>
+  <button type="scrape" class="button is-dark" class="button is-large">Scrape!</button>
+  </div>
+
   </body>
 </html>
