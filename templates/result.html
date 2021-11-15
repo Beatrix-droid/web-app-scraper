@@ -1,10 +1,9 @@
 
-
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>!</title>
+    <title>Scraper Results</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
 
@@ -15,15 +14,11 @@
     <p class="title">
    Results
     </p>
-    {% if results %}
-    {% for result in results %}
-    <p>{{result | join(" ")}}</p>
-    {% endfor %}
-    {% endif %}
   </div>
 </section>
     <section>
-      <p>  {{result}}</p>
+      <p>  {{ name }}</p>
+        <p>  {{ url }}</p>
     </section>
       </div>
   </body>
