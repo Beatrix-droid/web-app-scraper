@@ -1,4 +1,5 @@
 
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -12,10 +13,18 @@
 <section class="hero is-link">
   <div class="hero-body">
     <p class="title">
-    Results:
+   Results
     </p>
+    {% if results %}
+    {% for result in results %}
+    <p>{{result | join(" ")}}</p>
+    {% endfor %}
+    {% endif %}
   </div>
 </section>
+    <section>
+      <p>  {{result}}</p>
+    </section>
       </div>
   </body>
 </html>
