@@ -17,10 +17,8 @@ def image_handler(tag, desired_element, link):
 					full_path = image_path
 				else:
 					full_path = urljoin(link, image_path)
-					image_path.append(full_path)
+					image_paths.append(full_path)
 		return image_paths
 
 
-#print(image_handler("https://www.airbnb.co.uk/s/Kharkiv-River/homes?adults=1&place_id=ChIJm9FBL8tSJkER2hNUX0tUmAk&refinement_paths%5B%5D=%2Fhomes&checkin=2021-11-20&checkout=2021-11-21"))
-#image_handler("https://dev.to/dev_elie/building-a-python-web-scraper-in-flask-b87")
 
