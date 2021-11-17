@@ -3,16 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>!</title>
+    <title>Flask WebS Scraper</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">      <title>Scraper Results</title>
+
   </head>
 
-  <body>
+  <body background="white">
   <div class="block">
 <section class="hero is-link">
   <div class="hero-body">
     <p class="title">
-    A Python-based Web Scraper
+    A Flask based Web Scraper
     </p>
   </div>
 </section>
@@ -29,11 +31,17 @@
     <label>Enter the HTML tag you wish to scrape: </label>
     <input class="input is-normal" type="text" placeholder="HTML TAG" name="tag">
   </div>
+   <div class="vertical_space">
   <button type="submit" class="button is-dark" class="button is-large">Scrape!</button>
+   </div>
 </form>
 
+  <div class="flask-image-container">
+    <div class="vertical_space">
+  <img class="flask-image" src="https://flask-training-courses.uk/images/flask-logo.png"/>
+  </div>
+  </div>
+  </div>
 </div>
-</div>
-
   </body>
 </html>
