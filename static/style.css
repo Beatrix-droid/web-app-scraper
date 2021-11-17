@@ -1,0 +1,27 @@
+ .sub{
+        color: rgba(255, 214, 98, 1.00);
+        font-size: 150%;
+     }
+
+    .counter{
+        color: red;
+        font-size: 150%;
+        text-align: center;
+        padding-top: 10px;
+        font-weight: bold;
+    }
+
+    .vertical_space{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .subtitle{
+        font-size: 160%;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    body {
+        background-color: #DBF9FC;
+    }
