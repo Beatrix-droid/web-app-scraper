@@ -3,9 +3,8 @@ from bs4 import BeautifulSoup
 import requests
 from image_scraper import *
 
-
-
 app = Flask(__name__)
+app.static_folder = "static"
 
 
 @app.route("/")
@@ -29,9 +28,6 @@ def show_results():
 
 if __name__ == "__main_":
 	app.run(debug=True)
-
-
-
 
 
 
