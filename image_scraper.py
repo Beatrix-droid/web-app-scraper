@@ -5,7 +5,7 @@ def image_handler(tag, desired_element, link):
 		""" Function check if the requeste tag is an image. If it is, it looks at
 		its path (via 'src'). The validator checks if the image path is a URL.
 		If it is the image path is appended to the image paths_list. If it is not
-		the case, urljoin joins the iamge relative path to the base URL of the website"""
+		the case, urljoin joins the image relative path to the base URL of the website"""
 
 		image_paths = []
 		if tag =="img":
