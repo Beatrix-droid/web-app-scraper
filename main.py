@@ -1,6 +1,8 @@
+import pathlib
+
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
-import requests
+import requests, uuid
 from image_scraper import *
 
 app = Flask(__name__)
@@ -26,8 +28,22 @@ def show_results():
 	except:
 		return render_template("error.html")
 
+@app.route("/download", methods=["GET", "POST"])
+def image_downloader():
+	""""A function that downloads the scraped images. The uuid library is used to produce
+	unique IDs for the downloaded files."""
+
+	try:
+		for img in image_handler(tag, desired_element,link):
+			image_link = img
+			file_name =  str(uuid.uuid4())
+			file_extension = pathlib.Path(image_link).suffix
+			picture_name = file_name + file_extension
+			download_path = str(pathlib.Path.home()/"Downloads")
+			
+	except:
+		pass
+
 if __name__ == "__main_":
 	app.run(debug=True)
-
-
 
