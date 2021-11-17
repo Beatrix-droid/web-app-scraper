@@ -1,4 +1,4 @@
- .sub{
+    .sub{
         color: rgba(255, 214, 98, 1.00);
         font-size: 150%;
      }
@@ -25,3 +25,14 @@
     body {
         background-color: #DBF9FC;
     }
+
+    .flask-image-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flask-image{
+        height:65%;
+        width: 65%;
+     }
