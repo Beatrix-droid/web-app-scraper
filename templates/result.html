@@ -38,7 +38,22 @@
             {% endfor %}
             {% endif %}
         </div>
+        {% for path in images %}
+        <a href="{{ path }}"><img src="  {{  path }}" class="img"></a>
+        {% endfor %}
+        {% with messages = get_flashed_messages()%}
+            {% if messages %}
+                {%for message in messages%}
+                <p>{{message}}</p>
+                {%endfor%}
+            {%endif%}
+        {%endwith%}
     </section>
+      </div>
+  <div>
+       {%if image_paths%}
+        <a href="{{url_for('image_downloader')}}" class="btn btn-primary m-2" id="download">Download Images<i class="bi bi-cloud-arrow-down-fill m-2"></i></a>
+        {%endif%}
   </div>
   </body>
 </html>
