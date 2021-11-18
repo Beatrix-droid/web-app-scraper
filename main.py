@@ -1,53 +1,52 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash
 from bs4 import BeautifulSoup
-import requests
-import lxml
+import requests, uuid, os, pathlib
+from image_scraper import *
 
 app = Flask(__name__)
+app.static_folder = "static"
 
 
 @app.route("/")
-def get_dev_jobs():
-	html_text = requests.get("https://www.reed.co.uk/jobs/python-jobs").text
-	soup = BeautifulSoup(html_text, "lxml")
-	jobs = soup.find_all("article", class_="job-result")
-
-	for index, job in enumerate(jobs):
-			title = job.find("h3", class_="title").text.replace("\n", "")
-			company_name = job.find(class_="posted-by").a.text
-			company = job.find("div", class_="posted-by").text
-			company = company.strip()
-			company = company.split("by")
-			company[0] = company[0][7:]
-
-			metadata = job.find("div", class_="metadata")
-			salary = metadata.find("li", class_="salary").text
-			location = metadata.find("span").text
-			time = metadata.find("li", class_="time").text
-			description = job.find(class_="description").p.text
-
-			remote = metadata.text
-			if "Work from home" in remote:
-				work_remotely = "Yes"
-			else:
-				work_remotely = "No"
-
-			more_info = job.header.h3.a["href"]
-
-			result = {
-					"Date Posted:": company[0],
-					"Company:": company_name,
-					"Job Title:": title,
-					"Salary:": salary,
-					"Location:": location,
-					"Time:": time,
-					"Work from home:": work_remotely,
-					"Description:": description,
-					"More info:": more_info}
-
-			return render_template("index.html", result=result)
+def post_form():
+	return render_template("index.html")
 
 
+@app.route("/result", methods=["POST"])
+def show_results():
+	global link, tag, desired_element
+	link = request.form.get("link")
+	try:
+		tag = request.form.get("tag")
+		html_text = requests.get(link).text
+		soup = BeautifulSoup(html_text, "html.parser")
+		desired_element = soup.find_all(tag)
+		counter = len(desired_element)
+		image_paths = image_handler(tag, desired_element, link)
+		return render_template("result.html", tag=tag, url=link, images=image_paths, count=counter, results=desired_element)
+	except:
+		return render_template("error.html")
+
+
+@app.route("/download", methods=["GET", "POST"])
+def image_downloader():
+	""""A function that downloads the scraped images. The uuid library is used to produce
+	unique IDs for the downloaded files. The pathlib module offers classes representing filesystem with
+	semantics for different OSs. """
+	try:
+		for img in image_handler(tag, desired_element, link):
+			image_link = img
+			# assigning a unique name to each image
+			file_name = str(uuid.uuid4())
+			# purepath.(filename)suffix returns the file extension of "filename"
+			file_extension = pathlib.Path(image_link).suffix
+			picture_name = file_name + file_extension
+			# path.home() returns a new object representing the user's home directory.
+			download_path = str(pathlib.Path.home()/"Downloads")
+			picture_path = os.path.join(download_path, picture_name)
+	except:
+		flash(" Oops something went wrong with the download process", "warning")
+		return
 
 if __name__ == "__main_":
-	app.run(debug=True, port=8000)
+	app.run(debug=True)
