@@ -1,8 +1,6 @@
-import pathlib
-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from bs4 import BeautifulSoup
-import requests, uuid
+import requests, uuid, os, pathlib
 from image_scraper import *
 
 app = Flask(__name__)
@@ -12,6 +10,7 @@ app.static_folder = "static"
 @app.route("/")
 def post_form():
 	return render_template("index.html")
+
 
 @app.route("/result", methods=["POST"])
 def show_results():
@@ -28,22 +27,26 @@ def show_results():
 	except:
 		return render_template("error.html")
 
+
 @app.route("/download", methods=["GET", "POST"])
 def image_downloader():
 	""""A function that downloads the scraped images. The uuid library is used to produce
-	unique IDs for the downloaded files."""
-
+	unique IDs for the downloaded files. The pathlib module offers classes representing filesystem with
+	semantics for different OSs. """
 	try:
-		for img in image_handler(tag, desired_element,link):
+		for img in image_handler(tag, desired_element, link):
 			image_link = img
-			file_name =  str(uuid.uuid4())
+			# assigning a unique name to each image
+			file_name = str(uuid.uuid4())
+			# purepath.(filename)suffix returns the file extension of "filename"
 			file_extension = pathlib.Path(image_link).suffix
 			picture_name = file_name + file_extension
+			# path.home() returns a new object representing the user's home directory.
 			download_path = str(pathlib.Path.home()/"Downloads")
-			
+			picture_path = os.path.join(download_path, picture_name)
 	except:
-		pass
+		flash(" Oops something went wrong with the download process", "warning")
+		return
 
 if __name__ == "__main_":
 	app.run(debug=True)
-
