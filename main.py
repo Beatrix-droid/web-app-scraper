@@ -49,4 +49,4 @@ def image_downloader():
 		return
 
 if __name__ == "__main_":
-	app.run(debug=True)
+	app.run()
