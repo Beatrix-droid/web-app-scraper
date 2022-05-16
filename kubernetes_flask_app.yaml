@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetesflaskapp-deploy
+  labels:
+    app: kubernetesflaskapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetesflaskapp
+  template:
+    metadata:
+      labels:
+        app: kubernetesflaskapp
+    spec:
+      containers:
+      - name: kubernetesflaskapp
+        image: beatrix1997/kubernetes_flask_app:0.1
+        ports:
+        - containerPort: 5000
