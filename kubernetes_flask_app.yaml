@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: kubernetesflaskapp
-        image: beatrix1997/kubernetes_flask_app:0.1
+        image: beatrix1997/kubernetes_flask_app
         ports:
         - containerPort: 5000
