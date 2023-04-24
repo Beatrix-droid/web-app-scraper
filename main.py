@@ -15,8 +15,7 @@ def post_form():
 @app.route("/result", methods=["POST"])
 def show_results():
 	global link, tag, desired_element
-	link = request.form.get("link")
-	link= bleach.clean(link)
+	link = request.form.get(bleach.clean("link"))
 	try:
 		tag = request.form.get("tag")
 		html_text = requests.get(link).text
