@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash
 from bs4 import BeautifulSoup
 import requests, uuid, os, pathlib
 from image_scraper import *
-
+import bleach
 app = Flask(__name__)
 app.static_folder = "static"
 
@@ -16,6 +16,7 @@ def post_form():
 def show_results():
 	global link, tag, desired_element
 	link = request.form.get("link")
+	link= bleach.clean(link)
 	try:
 		tag = request.form.get("tag")
 		html_text = requests.get(link).text
