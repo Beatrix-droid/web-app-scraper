@@ -3,24 +3,25 @@
 
 this is the first custom image I will try to to create a docker container for, so docker cheat sheet notes are contained here
 
-# what is docker?
+## what is docker?
 
-docker is a virtualisation software.
-in a generic OS, there is an application layer, and a kernel.  The kernle is the middle man between the application layer and the hardware. It manages memory, cpu and threads.
+docker is a virtualization software.
+in a generic OS, there is an application layer, and a kernel.  The kernel is the middle man between the application layer and the hardware. It manages memory, cpu and threads.
 
 ### docker vs virtual machine
-Virtual machines will create both an abstract application layer AND a virtual kernel. So the iamges take up quite a lot of diskspace, and take a buit to load.
-Docker images on the other hand only anstract the application layer and use the host's kernel to operate. They boot up faster and take up a lot let space.
+Virtual machines will create both an abstract application layer AND a virtual kernel. So the images take up quite a lot of disk-space, and take a built to load.
+Docker images on the other hand only abstract the application layer and use the host's kernel to operate. They boot up faster and take up a lot let space.
 Initially they were created for linux (so a docker image could not run on windows because it was expecting to find a linux kernel and not a linux one but this has been changed)
 
-Docker is great because different parts of an application can be packaged into an image, for every developer to install on their environment with a universla command, as opposed to doing this in the old fashioned way, where for an app each service needed to be installed differently depending on the developer's environment/
+Docker is great because different parts of an application can be packaged into an image, for every developer to install on their environment with a universal command, as opposed to doing this in the old fashioned way, where for an app each service needed to be installed differently depending on the developer's environment/
 
 Docker thus makes the process of deploying applications and testing them a lot less error prone. Truly one procedure to follow that works on every env.
 
 ## docker images vs containers
 a docker container is a running instance of a docker image.
 
-Images are created and pushed to a registry, where developers can pull them down and work with them. The official docker registry is called "dockerhub". Unless you specify a different registry to look in, when you pull an image docker will automatically look there first.
+Images are created and pushed to a registry, where developers can pull them down and work with them. The official docker registry is called "dockerhub". Unless you specify a different registry to look in, when you pull an image docker will automatically look there first. This is the main page of docker hub
+<code>https://hub.docker.com/</code>
 
 You don't need an acc on dockerhub to pull down their images
 
