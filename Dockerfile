@@ -15,7 +15,7 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 # install the requirements for this app
 EXPOSE 5000
-ENV FLASK_APP=my_flask.py
+ENV FLASK_APP=main.py
 CMD ["flask", "run", "--host", "0.0.0.0"]
 
 # CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
