@@ -98,3 +98,7 @@ Every image consists of multiple layers. This makes docker efficient because ima
 - <code>COPY {src} {dest}</code> copies files from our machine {src} to a folder destination in the container. If you have multiple Dockerfile steps that use different files from your context, COPY them individually, rather than all at once. This ensures that each step’s build cache is only invalidated (forcing the step to be re-run) if the specifically required files change.
 - <code>WORKDIR</code> the equivalent of "cd" in linux, change directory of a container
 - <code>CMD</code> Like "RUN" in the docker file but it is specifically to start our application. It is the last command issued in a DockerFile
+
+## building the image
+To build the image run: 9with optional tag t)
+<code>docker build -t {name}{tag/version}  {location of docker file} </code>
