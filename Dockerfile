@@ -1,8 +1,8 @@
 FROM python:3.8-slim-buster  
 # base parent image with which we will add other layers of our appplication
 
-COPY static /app/
-COPY  templates /app/
+COPY static/ /app/
+COPY  templates/ /app/
 COPY image_scraper.py  /app/
 COPY main.py  /app/
 COPY  requirements.txt  /app/ 
