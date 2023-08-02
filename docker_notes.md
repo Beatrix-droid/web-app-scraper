@@ -1,10 +1,8 @@
 # docker notes cheatsheet
-
-
-this is the first custom image I will try to to create a docker container for, so docker cheat sheet notes are contained here
+this is the first custom image I will try to to create a docker container for, so docker cheat sheet notes are contained here, Sources used:
+<code>https://www.youtube.com/watch?v=pg19Z8LL06w</code>
 
 ## what is docker?
-
 docker is a virtualization software.
 in a generic OS, there is an application layer, and a kernel.  The kernel is the middle man between the application layer and the hardware. It manages memory, cpu and threads.
 
@@ -26,7 +24,6 @@ Images are created and pushed to a registry, where developers can pull them down
 You don't need an acc on dockerhub to pull down their images
 
 ## some quick docker commands to:
-
 -to pull an image from dockerhub: (unless the version is specified docker will pull the latest image)
  <code>docker pull {name of image}:{version}</code>
 
@@ -48,13 +45,16 @@ the output returned is the id of the container running
 <code>docker logs {CONTAINER ID}</code>
 
 - to stop a running container
-<code>docker stop {CONTAINER ID}</code>
+<code>docker stop {CONTAINER ID OR CONTAINER NAME}</code>
 
 - to list all containers on the host (running or not)
 <code> docker ps -a</code>
 
 - start one or more stopped containers:
 <code>docker start {container}</code>
+
+- to start a container in detached mode with port binding and a custom container name:
+<code>docker run --name {your container name (no spaces allowed)} -d -p {HOST PORT}:{CONTAINER PORT} {IMAGE NAME}:{IMAGE VERSION}</code>
 
 so following from the above example the command would be <code>docker logs a51e21e7d79d</code>
 
@@ -72,3 +72,29 @@ for example, to map/bind port 9000 of our host's to the container running nginx 
 <code> docker run -d -p 9000:80  nginx:1.25</code>
 
 Only one service can run on a specific port on the host.
+
+## docker registry vs repository
+Docker registry: a service providing storage. Can be hosted bby a third party like AwS or by yourself
+It is a collection of repositories
+
+Docker repository: a collection of related images with the same name but different versions
+
+## Building your own docker images
+- We want to deploy our app as a docker container. For that we need to create a "definition" of how to build an image from our application. That definition is created in a DockerFile
+
+## DockerFile
+- A DockerFile is a <em>text document</em> that <em>contains commands to assemble an image.</em>
+- Docker can then build an image by reading those instructions.
+
+- Docker starts from a parent image or "base image". It's a docker image that your image is based on.
+- Docker files <em>must begin</em> with a FROM instruction..
+- Build image from the specified image
+
+Every image consists of multiple layers. This makes docker efficient because image layers can be cached, etc.
+
+- docker file commands:
+- <code>FROM</code> build this image from the specified image
+- <code>RUN</code> will execute any command in a shell inside the container environment
+- <code>COPY {src} {dest}</code> copies files from our machine {src} to a folder destination in the container. If you have multiple Dockerfile steps that use different files from your context, COPY them individually, rather than all at once. This ensures that each step’s build cache is only invalidated (forcing the step to be re-run) if the specifically required files change.
+- <code>WORKDIR</code> the equivalent of "cd" in linux, change directory of a container
+- <code>CMD</code> Like "RUN" in the docker file but it is specifically to start our application. It is the last command issued in a DockerFile
