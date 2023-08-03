@@ -56,6 +56,12 @@ the output returned is the id of the container running
 - to start a container in detached mode with port binding and a custom container name:
 <code>docker run --name {your container name (no spaces allowed)} -d -p {HOST PORT}:{CONTAINER PORT} {IMAGE NAME}:{IMAGE VERSION}</code>
 
+- to remove any unused images by containers:
+<code> docker image prune -a</code>
+
+- to remove any images in general:
+<code>docker image rm {IMAGE}:{version}</code>
+
 so following from the above example the command would be <code>docker logs a51e21e7d79d</code>
 
 ## Container Port vs host Port
