@@ -49,5 +49,5 @@ def image_downloader():
 		flash(" Oops something went wrong with the download process", "warning")
 		return
 
-if __name__ == "__main_":
+if __name__ == "__main__":
 	app.run()
