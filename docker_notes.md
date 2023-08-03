@@ -106,5 +106,5 @@ Every image consists of multiple layers. This makes docker efficient because ima
 - <code>CMD</code> Like "RUN" in the docker file but it is specifically to start our application. It is the last command issued in a DockerFile
 
 ## building the image
-To build the image run: 9with optional tag t)
+To build the image run:
 <code>docker build -t {name}{tag/version}  {location of docker file} </code>
